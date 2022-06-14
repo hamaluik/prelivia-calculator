@@ -1,0 +1,15 @@
+[package]
+name = "prelivia-calculator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4"
+actix-files = "0.6"
+dotenv = "0.15"
+anyhow = "1"
+env_logger = "0.9"
+log = "0.4"
+serde = { version = "1", features = ["derive"] }
+csv = "1"
+

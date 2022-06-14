@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estimated Pressure Injury Cost-Savings</title>
+    <link href="style.css" rel="stylesheet"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest"></head>
+<body>
+    <section id="calculator" class="questions">
+        <div class="block">
+            <form id="calculator-form" action="#">
+                <div class="field">
+                    <label class="label" for="facility_name">Please enter the name of your facility</label>
+                    <div class="control">
+                        <input id="facility_name" class="input" type="text" placeholder="Your hospital or facility name">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="facility_type">Please select your facility type.</label>
+                    <div class="control is-expanded">
+                        <div class="select is-fullwidth">
+                            <select id="facility_type">
+                                <option selected value="acute">Acute Care</option>
+                                <option value="subacute">Sub-Acute/SNF Facility</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="patients_per_day">How many patients are in your facility on a typical day?</label>
+                    <div class="control">
+                        <input class="input" id="patients_per_day" required type="number" min="1" value="500" placeholder="500" inputmode="numeric" pattern="[0-9]*">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="length_of_stay">What is the average length of stay in days for residents at your facility?</label>
+                    <div class="control">
+                        <input class="input" id="length_of_stay" required type="number" min="1" value="7" placeholder="7" inputmode="numeric" pattern="[0-9]*">
+                    </div>
+                    <p class="help">If you do not know, the pre-filled value represents the national average.</p>
+                </div>
+                <div class="field">
+                    <label class="label" for="incidence">What is your facility's incidence of Stage 2 or higher pressure injuries?</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="incidence" required type="number" min="0" max="100" step="0.1" value="3.6" placeholder="3.6" inputmode="decimal">
+                        <span class="icon is-small is-right"><i class="i-percent"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M112 224c61.9 0 112-50.1 112-112S173.9 0 112 0 0 50.1 0 112s50.1 112 112 112zm0-160c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm224 224c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm0 160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zM392.3.2l31.6-.1c19.4-.1 30.9 21.8 19.7 37.8L77.4 501.6a23.95 23.95 0 0 1-19.6 10.2l-33.4.1c-19.5 0-30.9-21.9-19.7-37.8l368-463.7C377.2 4 384.5.2 392.3.2z"/></svg></i></span>
+                    </div>
+                    <p class="help">If you do not know, the pre-filled value represents the national average.</p>
+                </div>
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <input class="button is-info" type="submit" value="Calculate">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section id="results" class="results hidden">
+        <div class="block">
+            <p>Pressure injuries will cost your facility an estimated <span id="estimated_cost" class="result">$2,488,192</span> this year.</p>
+            <form action="/respond" id="contact" method="POST">
+                <div class="field">
+                    <label class="label" for="email">Enter your email to receive a copy of your summary and learn how Prelivia can help your patients and save you money:</label>
+                    <div class="control has-icons-left">
+                        <input type="hidden" id="h_facility_name" name="facility_name">
+                        <input type="hidden" id="h_facility_type" name="facility_type">
+                        <input type="hidden" id="h_patients_per_day" name="patients_per_day">
+                        <input type="hidden" id="h_length_of_stay" name="length_of_stay">
+                        <input type="hidden" id="h_incidence" name="incidence">
+                        <input class="input" name="email" type="email" required placeholder="smith@institution.com">
+                        <span class="icon is-left"><i class="i-envelope"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg></i></span>
+                    </div>
+                </div>
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <button class="button" id="go-back">Go Back</button>
+                    </div>
+                    <div class="control">
+                        <input class="button is-info" type="submit" value="Email me!">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const incidence_cost = 15270;
+            var s_calc = document.getElementById("calculator");
+            var s_results = document.getElementById("results");
+
+            var e_name = document.getElementById("facility_name");
+            var e_calc = document.getElementById("calculator-form");
+            var e_type = document.getElementById("facility_type");
+            var e_ppd = document.getElementById("patients_per_day");
+            var e_los = document.getElementById("length_of_stay");
+            var e_inc = document.getElementById("incidence");
+            var e_cost = document.getElementById("estimated_cost");
+            var e_back = document.getElementById("go-back");
+
+            var h_facility_name = document.getElementById("h_facility_name");
+            var h_facility_type = document.getElementById("h_facility_type");
+            var h_patients_per_day = document.getElementById("h_patients_per_day");
+            var h_length_of_stay = document.getElementById("h_length_of_stay");
+            var h_incidence = document.getElementById("h_incidence");
+
+            var format = new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' });
+
+            var update = function() {
+                var ppd = parseInt(e_ppd.value);
+                var los = parseInt(e_los.value);
+                var inc = parseFloat(e_inc.value) * 0.01;
+                var ppy = ppd * 365.0 / los * inc;
+                var cost = ppy * incidence_cost;
+
+                e_cost.textContent = format.format(cost);
+
+                h_facility_name.value = e_name.value;
+                h_facility_type.value = e_type.value;
+                h_patients_per_day.value = e_ppd.value;
+                h_length_of_stay.value = e_los.value;
+                h_incidence.value = e_inc.value;
+            };
+
+            var type_update = function() {
+                var type = e_type.value;
+                if(type == "acute") {
+                    e_los.value = 7;
+                    e_los.placeholder = "7";
+                }
+                else if(type == "subacute") {
+                    e_los.value = 28;
+                    e_los.placeholder = "28";
+                }
+                update();
+            };
+
+            e_type.onchange = type_update;
+            e_type.oninput = type_update;
+            e_ppd.onchange = update;
+            e_ppd.oninput = update;
+            e_los.onchange = update;
+            e_los.oninput = update;
+            e_inc.onchange = update;
+            e_inc.oninput = update;
+
+            e_calc.onsubmit = function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                update();
+                s_calc.classList.add("hidden");
+                s_results.classList.remove("hidden");
+            }
+
+            e_back.onclick = function() {
+                s_calc.classList.remove("hidden");
+                s_results.classList.add("hidden");
+            };
+
+            update();
+        })();
+    </script>
+</body>
+
+</html>
+
